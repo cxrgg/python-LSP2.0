@@ -16,9 +16,9 @@ class LsprobatSpider(scrapy.Spider):
         names = response.xpath('//h2/a/@title').extract()
 
         for img_path, name in zip(img_paths, names):
-            item = ItemName()
-            item["name"] = name
-            yield item
+            # item = ItemName()
+            # item["name"] = name
+            # yield item
             yield scrapy.Request(base_url + img_path, callback=self.parse_img)
 
         # 文件列表下一页自动跳转

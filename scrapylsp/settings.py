@@ -64,7 +64,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'scrapylsp.pipelines.ScrapylspPipeline': 300,
+    'scrapy.pipelines.images.ImagesPipeline': None,
+    'scrapylsp.pipelines.ScrapylspPipeline': 300,
 }
 
 IMAGES_STORE = '../pic/'
