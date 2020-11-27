@@ -17,7 +17,7 @@ def mkdir(path):
         # 如果不存在则创建目录
         # 创建目录操作函数
         os.mkdir(path)
-        print(path + ' 目录创建成功')
+        print('目录创建成功' + '*' * 20 + path)
         return True
     else:
         # 如果目录存在则不创建，并提示目录已存在
