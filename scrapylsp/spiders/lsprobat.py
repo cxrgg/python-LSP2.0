@@ -1,6 +1,6 @@
 import scrapy
 
-from scrapylsp.items import ItemName, ItemImage
+from scrapylsp.items import ItemImage
 from scrapylsp.utils import subUrlBefore
 
 
@@ -13,22 +13,15 @@ class LsprobatSpider(scrapy.Spider):
     def parse(self, response):
         base_url = 'https://qql6k.com:5561'
         img_paths = response.xpath('//h2/a/@href').extract()
-        names = response.xpath('//h2/a/@title').extract()
+        # names = response.xpath('//h2/a/@title').extract()
 
-        for img_path, name in zip(img_paths, names):
-            # item = ItemName()
-            # item["name"] = name
-            # yield item
+        for img_path in img_paths:
             yield scrapy.Request(base_url + img_path, callback=self.parse_img)
 
         # 文件列表下一页自动跳转
         next_path = response.xpath('//div[2]/ul/li/a/@href').extract()[-1]
-        print("-" * 200)
-        print(next_path)
-        print("-" * 200)
         if next_path != "javascript:;":
             next_path = "https://qql6k.com:5561/luyilu/" + next_path
-            print("列表" + next_path)
             yield scrapy.Request(next_path, callback=self.parse)
 
     def parse_img(self, response):
