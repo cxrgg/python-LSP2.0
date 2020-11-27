@@ -6,8 +6,12 @@
 import scrapy
 
 
-class ScrapylspItem(scrapy.Item):
+class ItemName(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
-    img_path = scrapy.Field()
+
+class ItemImage(scrapy.Item):
+    # define the fields for your item here like:
+    name = scrapy.Field()
+    imgUrl = scrapy.Field()
 

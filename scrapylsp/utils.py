@@ -1,6 +1,9 @@
+# 引入模块
+import os
+import re
+
+
 def mkdir(path):
-    # 引入模块
-    import os
     # 去除首位空格
     path = path.strip()
     # 去除尾部 \ 符号
@@ -18,5 +21,22 @@ def mkdir(path):
         return True
     else:
         # 如果目录存在则不创建，并提示目录已存在
-        print(path + ' 目录已存在')
+        # print(path + ' 目录已存在')
         return False
+
+
+# 切割字符串:去除中[]及其中间的所有值
+def subBrackets(name):
+    pattern = r'\[.*?\]'
+    return re.sub(pattern, '', name)
+
+
+# 获取url最后一个/前面的值
+def subUrlBefore(name):
+    pattern = r'/([^/]+).html'
+    return re.sub(pattern, '', name) + "/"
+
+
+# 获取url最后一个/后面的值
+def subUrlAfter(name):
+    return re.split("/", name)[-1]
