@@ -54,7 +54,8 @@ ROBOTSTXT_OBEY = False
 # DOWNLOADER_MIDDLEWARES = {
 #    'scrapylsp.middlewares.ScrapylspDownloaderMiddleware': 543,
 # }
-
+#下载指定的field
+IMAGES_URLS_FIELD = 'imgUrl'
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 # EXTENSIONS = {
