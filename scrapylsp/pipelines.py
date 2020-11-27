@@ -1,10 +1,5 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 from scrapy.exceptions import DropItem
 from scrapy.http import Request
-# useful for handling different item types with a single interface
 from scrapy.pipelines.images import ImagesPipeline
 
 from scrapylsp.utils import subUrlAfter
@@ -30,5 +25,4 @@ class ScrapylspPipeline(ImagesPipeline):
             raise DropItem('Image Downloaded Failed')
         else:
             print("图片下载中" + '*' * 20 + image_paths[0])
-            pass
         return item

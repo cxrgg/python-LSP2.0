@@ -38,7 +38,6 @@ class LsprobatSpider(scrapy.Spider):
             imgUrls = response.xpath("//div/article/p/img/@src").extract()
             # 当前图片目录名
             name = response.meta['name']
-            # name = response.xpath("//h1/text()").extract_first()
             for imgUrl in imgUrls:
                 item = ItemImage()
                 item["name"] = name
@@ -48,7 +47,6 @@ class LsprobatSpider(scrapy.Spider):
             pic_prefix_next = subUrlBefore(response.request.url)
 
             # 图片页面下一页,自动跳转
-            # next_img_paths = response.xpath("//div[2]/ul/li/a/@href").extract()
             if next_img_paths:
                 next_img_path = pic_prefix_next + next_img_paths[-1]
                 yield scrapy.Request(next_img_path, callback=self.parse_img, meta={'name': name})

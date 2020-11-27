@@ -21,7 +21,6 @@ def mkdir(path):
         return True
     else:
         # 如果目录存在则不创建，并提示目录已存在
-        # print(path + ' 目录已存在')
         return False
 
 
